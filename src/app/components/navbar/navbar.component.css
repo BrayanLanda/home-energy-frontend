@@ -1,0 +1,38 @@
+.custom-navbar {
+    background: rgba(1, 104, 206, 0.431); /* Fondo semi-transparente */
+    border-bottom: 2px solid rgba(20, 77, 103, 0.257);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    flex-direction: row; /* Mantiene los elementos en fila */
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 20px; /* Espaciado entre los elementos */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #00e6e6;
+    cursor: pointer;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .navbar-toggler-icon {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
