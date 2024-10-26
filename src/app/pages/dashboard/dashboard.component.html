@@ -1,0 +1,161 @@
+<div class="dashboard-container d-flex">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Dashboard Content -->
+  <div class="content p-4">
+   
+    <div class="row g-4 mb-4">
+      <!-- Card de Consumo de Energía -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card bg-gradient-primary text-white h-100 shadow-sm rounded">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title mb-1">Consumo de Energía</h6>
+                <p class="small mb-0">Consumo actual (kWh)</p>
+                <h4>56 kWh</h4>
+              </div>
+              <div>
+                <i class="bi bi-lightning-charge-fill display-4"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
+            <a class="text-white" routerLink="/consumption">Ver más detalles</a>
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card de Comparación de Consumo -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card bg-gradient-warning text-white h-100 shadow-sm rounded">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title mb-1">Comparación de Consumo</h6>
+                <p class="small mb-0">Este mes vs. mes pasado</p>
+                <h4 class="text-dark">-15%</h4>
+              </div>
+              <div>
+                <i class="bi bi-graph-down-arrow display-4"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
+            <a class="text-white" href="#">Ver detalles</a>
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card de Recompensas -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card bg-gradient-success text-white h-100 shadow-sm rounded">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title mb-1">Recompensa por Ahorro</h6>
+                <p class="small mb-0">Menor consumo este mes</p>
+                <h4 class="text-dark">Gift Card</h4>
+              </div>
+              <div>
+                <i class="bi bi-gift-fill display-4"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
+            <a class="text-white" href="#">Reclamar</a>
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card de Alertas de Consumo -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card bg-gradient-danger text-white h-100 shadow-sm rounded">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title mb-1">Alerta de Consumo</h6>
+                <p class="small mb-0">Consumo elevado</p>
+                <h4 class="text-dark">75 kWh</h4>
+              </div>
+              <div>
+                <i class="bi bi-exclamation-triangle-fill display-4"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 d-flex align-items-center justify-content-between">
+            <a class="text-white" href="#">Tomar acción</a>
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-4 mb-4">
+      <!-- Area Chart -->
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <i class="bi bi-graph-up me-1"></i>
+            Area Chart Example
+          </div>
+          <div class="card-body">
+            <canvas id="areaChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-header">
+            <i class="bi bi-lightning-charge-fill me-1"></i>
+            Energy Consumption
+          </div>
+          <div class="card-body">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DataTable -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="bi bi-table me-1"></i>
+        Energy Consumption Data
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Current Month (kWh)</th>
+                <th>Previous Month (kWh)</th>
+                <th>Difference (kWh)</th>
+                <th>Reward</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of tableData">
+                <td>{{ row.id }}</td>
+                <td>{{ row.user }}</td>
+                <td>{{ row.currentMonth }}</td>
+                <td>{{ row.previousMonth }}</td>
+                <td>{{ row.difference }}</td>
+                <td>{{ row.reward }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
