@@ -1,0 +1,28 @@
+<ng-template #energyTipsModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="header-content">
+          <div class="icon-container">
+            <i class="bi bi-lightbulb-fill"></i>
+          </div>
+          <h5 class="modal-title" id="energyTipsModalLabel">
+            Energy-Saving Tips
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close custom-close"
+          (click)="modalService.dismissAll()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="tip-container">
+          <div class="tip-icon">
+            <i class="bi bi-info-circle-fill"></i>
+          </div>
+          <p class="tip-text">{{ currentTip }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>

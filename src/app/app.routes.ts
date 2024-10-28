@@ -5,6 +5,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ConsumptionComponent } from './pages/consumption/consumption.component';
+import { ChatComponent } from './pages/chat/chat.component';
+import { EnergyComponent } from './energy/energy.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -12,5 +14,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'consumption', component: ConsumptionComponent}
+    {path: 'consumption', component: ConsumptionComponent},
+    {path: 'chat', component: ChatComponent},
+    {path: 'energy', component: EnergyComponent}
 ];
