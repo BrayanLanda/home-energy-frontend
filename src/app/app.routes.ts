@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ConsumptionComponent } from './pages/consumption/consumption.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { EnergyComponent } from './energy/energy.component';
+import { RewardComponent } from './pages/reward/reward.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'consumption', component: ConsumptionComponent},
+    {path: 'reward', component: RewardComponent},
     {path: 'chat', component: ChatComponent},
     {path: 'energy', component: EnergyComponent}
 ];

@@ -15,23 +15,32 @@
 
       <div class="messages mt-2 p-3">
         <div
+          class="message-item animate-message"
+        > 
+        <!-- <div
           *ngFor="let message of messages"
           [ngClass]="{'user-message': message.isUser, 'ai-message': !message.isUser}"
           class="message-item animate-message"
-        >
-          {{ message.text }}
+        > -->
+          <!-- {{ message.text }} -->
         </div>
       </div>
 
       <div class="input-container d-flex align-items-center p-3 bg-dark rounded-bottom">
         <input
           type="text"
+          placeholder="Type your message..."
+          class="form-control me-2 bg-dark text-light border-0 rounded"
+        />
+        <!-- <input
+          type="text"
           [(ngModel)]="userInput"
           (keydown.enter)="sendMessage()"
           placeholder="Type your message..."
           class="form-control me-2 bg-dark text-light border-0 rounded"
-        />
-        <button (click)="sendMessage()" class="btn btn-warning btn-send">Send</button>
+        /> -->
+        <button class="btn btn-warning btn-send">Send</button>
+        <!-- <button (click)="sendMessage()" class="btn btn-warning btn-send">Send</button> -->
       </div>
     </div>
   </div>
