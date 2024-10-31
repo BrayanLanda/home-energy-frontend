@@ -43,3 +43,6 @@ Thumbs.db
 
 #Entorno
 .env
+
+#Test
+botpress.service.ts
