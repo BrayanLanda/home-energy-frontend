@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
 import { RouterLink } from '@angular/router';
+import { Consumptions } from '../../models/consumptions';
+import { ConsumptionService } from '../../services/consumption.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +16,7 @@ import { RouterLink } from '@angular/router';
 export class DashboardComponent  implements OnInit{
   areaChart: any;
   barChart: any;
+  consumptionData: Consumptions[] = [];
 
   // Datos de ejemplo para la tabla
   // Datos de ejemplo para la tabla
@@ -25,27 +28,45 @@ tableData = [
   { id: 5, user: 'Evelyn Turner', currentMonth: 250, previousMonth: 240, difference: 10, reward: 'No Reward' },
 ];
 
-  constructor() {
+  constructor(private consumptionService: ConsumptionService) {
     // Registra todos los elementos de Chart.js
     Chart.register(...registerables);
   }
 
   ngOnInit() {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      this.initAreaChart();
       this.initBarChart();
+      this.loadConsumptionData(); 
     }
+  }
+
+  loadConsumptionData() {
+    const userId = 1; // Cambia esto al ID del usuario que necesites
+    this.consumptionService.getConsumptionHistory(userId).subscribe({
+      next: (data) => {
+        this.consumptionData = data; // Almacena los datos de consumo
+        this.initAreaChart(); // Inicializa el gráfico después de obtener los datos
+      },
+      error: (error) => {
+        console.error('Error fetching consumption history', error); // Manejo de errores
+      }
+    });
   }
 
   initAreaChart() {
     const ctx = document.getElementById('areaChart') as HTMLCanvasElement;
+
+    // Extrae los datos para el gráfico
+    const labels = this.consumptionData.map(consumption => `${consumption.month}`); // Mes como etiqueta
+    const data = this.consumptionData.map(consumption => consumption.energyUsed); // Energía utilizada
+
     this.areaChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: labels,
         datasets: [{
-          label: 'Area Chart Example',
-          data: [10000, 25000, 15000, 20000, 30000, 35000],
+          label: 'Consumo de Energía 2024',
+          data: data,
           fill: true,
           borderColor: 'rgb(75, 192, 192)',
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -57,7 +78,7 @@ tableData = [
         plugins: {
           title: {
             display: true,
-            text: 'Area Chart Example'
+            text: 'Consumo de Energía por Mes'
           }
         }
       }
