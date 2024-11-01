@@ -6,7 +6,7 @@
   <!-- Avatar Section -->
   <div class="p-3 text-center border-bottom">
     <img src="assets/avatar.png" alt="User Avatar" class="rounded-circle mb-2" width="80" height="80">
-    <h6 class="m-0">Juan</h6>
+    <h6 class="m-0">{{ currentUser() ? capitalizeFirstLetter(currentUser()!.name) : 'Invitado' }}</h6>
   </div>
 
   <!-- Core Section -->
