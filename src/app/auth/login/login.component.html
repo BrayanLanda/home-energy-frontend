@@ -1,37 +1,48 @@
 <app-navbar></app-navbar>
 <div class="hero-section">
-    <div class="energy-grid">
-      <div class="grid-line" style="--i: 0"></div>
-      <div class="grid-line" style="--i: 1"></div>
-      <div class="grid-line" style="--i: 2"></div>
-      <div class="grid-line" style="--i: 3"></div>
-      <div class="grid-line" style="--i: 4"></div>
+  <div class="energy-grid">
+    <div class="grid-line" style="--i: 0"></div>
+    <div class="grid-line" style="--i: 1"></div>
+    <div class="grid-line" style="--i: 2"></div>
+    <div class="grid-line" style="--i: 3"></div>
+    <div class="grid-line" style="--i: 4"></div>
+  </div>
+  <form
+    class="container h-100 d-flex align-items-center justify-content-center flex-column hero-content"
+    (ngSubmit)="login()"
+    #loginForm="ngForm"
+  >
+    <h2 class="text-center">Iniciar Sesion</h2>
+
+    <div class="mb-3 form-floating">
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        placeholder="Correo Electronico"
+        [(ngModel)]="model.email"
+        required
+        email
+        #email="ngModel"
+      />
+      <label for="email">Correo Electrónico</label>
     </div>
-      <form
-        class="container h-100 d-flex align-items-center justify-content-center flex-column  hero-content"
-      >
-        <h2 class="text-center">Iniciar Sesion</h2>
-       
-        <div class="mb-3 form-floating">
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            name="email"
-            placeholder="Correo Electronico"
-          />
-          <label for="email">Correo Electrónico</label>
-        </div>
-        <div class="mb-3 form-floating">
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            name="password"
-            placeholder="Password"
-          />
-          <label for="password">Contraseña</label>
-        </div>
-        <button type="" class="btn">Login</button>
-      </form>
+    <div class="mb-3 form-floating">
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+        [(ngModel)]="model.password"
+        required
+        #password="ngModel"
+      />
+      <label for="password">Contraseña</label>
     </div>
+    <button type="submit" class="btn" [disabled]="!loginForm.form.valid">
+      Login
+    </button>
+  </form>
+</div>
